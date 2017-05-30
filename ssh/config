@@ -1,0 +1,14 @@
+Host doc
+  User jcg13
+  HostName shell1.doc.ic.ac.uk
+
+Host *.doc
+  User jcg13
+  ProxyCommand ssh doc nc %h.ic.ac.uk 22
+
+Host dougal
+  User jcg13
+  ProxyCommand ssh doc nc union.ic.ac.uk 22
+
+Host *
+  ServerAliveInterval 15
