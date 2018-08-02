@@ -27,9 +27,20 @@ set ignorecase
 set smartcase
 set showmatch
 
+if empty(glob('~/.vim/swap_files'))
+  silent !mkdir -p ~/.vim/swap_files
+endif
 set directory=~/.vim/swap_files//
+
 set undofile
+if empty(glob('~/.vim/undo_files'))
+  silent !mkdir -p ~/.vim/undo_files
+endif
 set undodir=~/.vim/undo_files//
+
+if empty(glob('~/.vim/backup_files'))
+  silent !mkdir -p ~/.vim/backup_files
+endif
 set backupdir=~/.vim/backup_files//
 
 syntax on
@@ -37,3 +48,24 @@ set t_Co=256
 set background=dark
 
 filetype plugin indent on
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'fatih/vim-go'
+Plug 'airblade/vim-gitgutter'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+call plug#end()
+
+autocmd VimEnter * NERDTree | wincmd p
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
