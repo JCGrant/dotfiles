@@ -69,3 +69,7 @@ call plug#end()
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+if executable('goimports') == 0
+  !go get golang.org/x/tools/cmd/goimports
+endif
+let g:go_fmt_command = "goimports"
