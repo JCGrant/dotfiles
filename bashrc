@@ -18,4 +18,11 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+if [ ! -f ~/.git-prompt.sh ]; then
+  curl -fLo ~/.git-prompt.sh http://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+fi
+source ~/.git-prompt.sh
+
+export PS1="\n\u@\h:\w $(__git_ps1 "(%s)")\nλ "
+
 alias ls="ls -G"
