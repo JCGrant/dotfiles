@@ -55,6 +55,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+set autoread
+autocmd FocusGained,BufEnter * silent! checktime
+autocmd FocusLost,WinLeave * :silent! w
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
@@ -65,6 +69,7 @@ Plug 'junegunn/fzf'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'morhetz/gruvbox'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end()
 
