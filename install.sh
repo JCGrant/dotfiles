@@ -11,5 +11,5 @@ ln -sf ~/dot-files/vimrc ~/.vimrc
 ln -sf ~/dot-files/inputrc ~/.inputrc
 
 [ ! -d ~/.ssh ] && mkdir .ssh
-ln -sf .ssh/config ~/.ssh/config
+ln -sf ~/dot-files/ssh/config ~/.ssh/config
 
