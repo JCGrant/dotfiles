@@ -64,8 +64,11 @@ Plug 'w0rp/ale'
 Plug 'junegunn/fzf'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
+
+colorscheme gruvbox
 
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
