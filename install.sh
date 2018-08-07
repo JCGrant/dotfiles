@@ -10,6 +10,8 @@ ln -sf ~/dot-files/vimrc ~/.vimrc
 
 ln -sf ~/dot-files/inputrc ~/.inputrc
 
+ln -sf ~/dot-files/tmux.conf ~/.tmux.conf
+
 [ ! -d ~/.ssh ] && mkdir .ssh
 ln -sf ~/dot-files/ssh/config ~/.ssh/config
 
