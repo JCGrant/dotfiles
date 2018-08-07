@@ -70,6 +70,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'morhetz/gruvbox'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
