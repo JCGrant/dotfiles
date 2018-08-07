@@ -23,6 +23,6 @@ if [ ! -f ~/.git-prompt.sh ]; then
 fi
 source ~/.git-prompt.sh
 
-export PS1="\n\u@\h:\w $(__git_ps1 "(%s)")\nλ "
+export PS1='\n\u@\h:\w $(__git_ps1 "(%s)")\nλ '
 
 alias ls="ls -G"
