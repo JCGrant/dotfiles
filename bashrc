@@ -30,3 +30,5 @@ alias ls="ls -G"
 if [ -f ~/.local-bashrc ]; then
   source ~/.local-bashrc
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

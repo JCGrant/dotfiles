@@ -56,3 +56,5 @@ alias phpserver="php -S 127.0.0.1:8000"
 
 alias ls='ls -Gp'
 alias ll='ls -l'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
