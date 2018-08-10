@@ -26,3 +26,7 @@ source ~/.git-prompt.sh
 export PS1='\n\u@\h:\w $(__git_ps1 "(%s)")\nλ '
 
 alias ls="ls -G"
+
+if [ -f ~/.local-bashrc ]; then
+  source ~/.local-bashrc
+fi
