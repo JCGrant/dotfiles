@@ -72,6 +72,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'morhetz/gruvbox'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
