@@ -23,6 +23,11 @@ if [ ! -f ~/.git-prompt.sh ]; then
 fi
 source ~/.git-prompt.sh
 
+if [ ! -f ~/.git-completion.bash ]; then
+  curl -fLo ~/.git-completion.bash http://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+fi
+source ~/.git-completion.bash
+
 export PS1='\n\u@\h:\w $(__git_ps1 "(%s)")\nλ '
 
 alias ls="ls -G"
