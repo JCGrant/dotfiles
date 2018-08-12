@@ -15,3 +15,6 @@ ln -sf ~/dot-files/tmux.conf ~/.tmux.conf
 [ ! -d ~/.ssh ] && mkdir .ssh
 ln -sf ~/dot-files/ssh/config ~/.ssh/config
 
+[ ! -x "$(command -v brew)" ] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew bundle
+
