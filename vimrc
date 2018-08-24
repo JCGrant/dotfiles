@@ -65,6 +65,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'Quramy/tsuquyomi'
 Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -89,3 +92,5 @@ endif
 let g:go_fmt_command = "goimports"
 
 let g:nerdtree_tabs_open_on_console_startup=1
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
