@@ -1,19 +1,21 @@
 #!/bin/bash
 
-ln -sf ~/dot-files/bash_profile ~/.bash_profile
-ln -sf ~/dot-files/bashrc ~/.bashrc
-ln -sf ~/dot-files/zshrc ~/.zshrc
+dotfiles_path="$HOME/dotfiles"
 
-ln -sf ~/dot-files/gitconfig ~/.gitconfig
+ln -sf $dotfiles_path/bash_profile ~/.bash_profile
+ln -sf $dotfiles_path/bashrc ~/.bashrc
+ln -sf $dotfiles_path/zshrc ~/.zshrc
 
-ln -sf ~/dot-files/vimrc ~/.vimrc
+ln -sf $dotfiles_path/gitconfig ~/.gitconfig
 
-ln -sf ~/dot-files/inputrc ~/.inputrc
+ln -sf $dotfiles_path/vimrc ~/.vimrc
 
-ln -sf ~/dot-files/tmux.conf ~/.tmux.conf
+ln -sf $dotfiles_path/inputrc ~/.inputrc
+
+ln -sf $dotfiles_path/tmux.conf ~/.tmux.conf
 
 [ ! -d ~/.ssh ] && mkdir .ssh
-ln -sf ~/dot-files/ssh/config ~/.ssh/config
+ln -sf $dotfiles_path/ssh/config ~/.ssh/config
 
 [ ! -x "$(command -v brew)" ] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew bundle
