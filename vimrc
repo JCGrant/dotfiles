@@ -87,3 +87,5 @@ if executable('goimports') == 0
   !go get golang.org/x/tools/cmd/goimports
 endif
 let g:go_fmt_command = "goimports"
+
+let g:nerdtree_tabs_open_on_console_startup=1
