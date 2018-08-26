@@ -34,3 +34,6 @@ if [ -f ~/.local-bashrc ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
