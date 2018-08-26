@@ -94,3 +94,10 @@ let g:go_fmt_command = "goimports"
 let g:nerdtree_tabs_open_on_console_startup=1
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
+
+let js_fixer = ['prettier']
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = js_fixer
+let g:ale_fixers['typescript'] = js_fixer
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
