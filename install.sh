@@ -20,3 +20,5 @@ ln -sf "$dotfiles_path/ssh/config" ~/.ssh/config
 [ ! -x "$(command -v brew)" ] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew bundle
 
+# for deoplete.nvim plugin
+pip3 install neovim
