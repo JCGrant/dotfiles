@@ -42,6 +42,8 @@ Plug 'SirVer/ultisnips'
 
 call plug#end()
 
+syntax on
+
 " For plugins to load correctly
 filetype plugin indent on
 
