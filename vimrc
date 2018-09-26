@@ -109,6 +109,7 @@ autocmd FocusLost,WinLeave * :silent! w
 autocmd VimEnter * NERDTree | wincmd p
 " Exit vim if NERDTree is the only open window
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
 let g:nerdtree_tabs_open_on_console_startup=1
 
 let g:deoplete#enable_at_startup = 1
