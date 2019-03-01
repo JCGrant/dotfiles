@@ -39,6 +39,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips'
+Plug 'munshkr/vim-tidal', {'do': 'sudo make install' }
 
 call plug#end()
 
