@@ -20,6 +20,8 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+export PATH=$PATH:$HOME/bin
+
 if [ ! -f ~/.git-prompt.sh ]; then
   curl -fLo ~/.git-prompt.sh http://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 fi
