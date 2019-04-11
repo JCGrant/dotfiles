@@ -42,7 +42,9 @@ source ~/.git-prompt.sh
 PROMPT_DIRTRIM=3
 export PS1='\n\u@\h:\w $(__git_ps1 "(%s)")\nλ '
 
-alias ls="ls -G"
+alias ls="ls -G --color"
+alias ll="ls -l"
+alias ..="cd .."
 
 if [ -f ~/.local-bashrc ]; then
   source ~/.local-bashrc
