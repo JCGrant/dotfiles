@@ -39,6 +39,7 @@ source ~/.git-prompt.sh
 
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
+PROMPT_DIRTRIM=3
 export PS1='\n\u@\h:\w $(__git_ps1 "(%s)")\nλ '
 
 alias ls="ls -G"
