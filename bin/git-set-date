@@ -1,0 +1,18 @@
+#!/bin/sh
+
+date=$1
+if [ -z "$date" ]
+then
+  echo "need a date"
+  exit 1
+fi
+
+clock=$2
+if [ -z "$clock" ]
+then
+  clock=$(date '+%X')
+fi
+
+timezone="+0100"
+
+GIT_COMMITTER_DATE="$date $clock $timezone" git commit --amend --no-edit --date "$date $clock $timezone"
