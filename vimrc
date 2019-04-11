@@ -122,6 +122,9 @@ autocmd FocusLost,WinLeave * :silent! w
 
 autocmd FileType python nmap gd <plug>(lsp-definition)<cr>
 
+" Save file as sudo. For protected files.
+cmap w!! w !sudo tee > /dev/null %
+
 " Start NERDTree and switch to code pane on start
 autocmd VimEnter * NERDTree | wincmd p
 " Exit vim if NERDTree is the only open window
