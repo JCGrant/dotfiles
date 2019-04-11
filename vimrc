@@ -120,6 +120,8 @@ autocmd FocusGained,BufEnter * silent! checktime
 " Save when focus is lost
 autocmd FocusLost,WinLeave * :silent! w
 
+autocmd FileType python nmap gd <plug>(lsp-definition)<cr>
+
 " Start NERDTree and switch to code pane on start
 autocmd VimEnter * NERDTree | wincmd p
 " Exit vim if NERDTree is the only open window
