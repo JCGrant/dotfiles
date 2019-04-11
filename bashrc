@@ -15,12 +15,22 @@ shopt -s checkwinsize
 EDITOR=vim
 
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/dotfiles/bin
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+export PATH="/usr/local/opt/unzip/bin:$PATH"
+
 export PATH=$PATH:$HOME/bin
+
 
 if [ ! -f ~/.git-prompt.sh ]; then
   curl -fLo ~/.git-prompt.sh http://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
