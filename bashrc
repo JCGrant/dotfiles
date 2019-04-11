@@ -46,8 +46,8 @@ alias ls="ls -G --color"
 alias ll="ls -l"
 alias ..="cd .."
 
-if [ -f ~/.local-bashrc ]; then
-  source ~/.local-bashrc
+if [ -f ~/.bashrc.local ]; then
+  source ~/.bashrc.local
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
