@@ -1,0 +1,14 @@
+#!/bin/bash
+
+git_dir="."
+if [ $# -eq 1 ]
+then
+  git_dir=$1
+fi
+
+if [ "${git_dir: -1}" == "/" ]
+then
+  git_dir="${git_dir%?}"
+fi
+
+vim -p $(pushd $git_dir > /dev/null && git status -s | awk '{print $2}' | sed "s/^/$git_dir\//" | tr '\n' ' ' && popd > /dev/null)
