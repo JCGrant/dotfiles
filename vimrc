@@ -126,6 +126,26 @@ autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
 let g:nerdtree_tabs_open_on_console_startup=1
+" Stops NERDTree with prepending nodes with '^G' symbol.
+let g:NERDTreeNodeDelimiter = "\u00a0"
+let g:NERDTreeIgnore = ['\.pyc$', '\.egg-info$', '__pycache__']
+
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
 
 let g:deoplete#enable_at_startup = 1
 
