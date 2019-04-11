@@ -10,5 +10,9 @@ Host dougal
   User jcg13
   ProxyCommand ssh doc nc union.ic.ac.uk 22
 
+Host calculon
+  User jcgrant
+  HostName calculon.babylontech.co.uk
+
 Host *
   ServerAliveInterval 15
