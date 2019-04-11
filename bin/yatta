@@ -1,0 +1,20 @@
+#!/bin/sh
+
+url=home.jcgrant.com/todo
+
+command=$1
+
+case "$command" in
+  "todos")
+    project_name=$2
+    filter='1 == 1'
+    if [ -n "$project_name" ]
+    then
+      filter='.project == "'"$project_name"'"'
+    fi
+    curl -s $url | jq '.value | map(select('"$filter"')) | map(.name)'
+    ;;
+  "projects")
+    curl -s $url | jq '.value | map(.project) | unique | map(select(. != ""))'
+    ;;
+esac
