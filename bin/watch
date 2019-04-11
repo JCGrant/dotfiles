@@ -1,0 +1,21 @@
+#!/bin/bash
+
+cleanup () {
+  kill -s SIGTERM $!
+  exit 0
+}
+
+trap cleanup SIGINT SIGTERM
+
+glob=$1
+command=$2
+
+if [ -z "$glob" ] || [ -z "$command" ]
+then
+  echo "usage: watch '*.py' 'make test'"
+  exit 1
+fi
+
+while true; do
+  find . -name "$glob" | entr -c -d -s "$command"
+done
