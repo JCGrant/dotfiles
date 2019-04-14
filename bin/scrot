@@ -1,0 +1,19 @@
+#!/bin/bash
+
+coords=$1
+output_dir=$2
+
+output_name=""
+if [[ "$output_dir" == *".jpg" ]]
+then
+  output_name=$output_dir
+else
+  file_name="$(date | md5 | head -c8).jpg"
+  if [ -z "$output_dir" ]
+  then
+    output_dir="./"
+  fi
+  output_name="$output_dir$file_name"
+fi
+
+screencapture -o -R "$coords" "$output_name"
