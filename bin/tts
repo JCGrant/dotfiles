@@ -1,0 +1,37 @@
+#!/bin/bash
+
+rawurlencode() {
+  local string="${1}"
+  local strlen=${#string}
+  local encoded=""
+  local pos c o
+  for (( pos=0 ; pos<strlen ; pos++ )); do
+     c=${string:$pos:1}
+     case "$c" in
+        [-_.~a-zA-Z0-9] ) o="${c}" ;;
+        * )               printf -v o '%%%02x' "'$c"
+     esac
+     encoded+="${o}"
+  done
+  echo "${encoded}"
+}
+
+eid="4"
+lid="1"
+vid="5"
+is_utf8="1"
+ext="mp3"
+account_id="5883747"
+account_secret="uetivb9tb8108wfj"
+
+get_checksum() {
+  echo -n "$eid$lid$vid${1}$is_utf8$ext$account_id$account_secret" | md5
+}
+
+text=$1
+checksum=$(get_checksum "$text")
+encoded_text=$(rawurlencode "$text")
+
+url="http://cache.oddcast.com/tts/gen.php?EID=$eid&LID=$lid&VID=$vid&TXT=$encoded_text&IS_UTF8=$is_utf8&EXT=$ext&ACC=$account_id&CS=$checksum&cache_flag=3"
+
+curl -s "$url" | ffplay -nodisp -autoexit - &> /dev/null
