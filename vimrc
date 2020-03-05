@@ -1,4 +1,4 @@
-" Don't try to be compativle with vi
+" Don't try to be compatible with vi
 set nocompatible
 
 " Helps force plugins to load correctly when it is turned back on below
@@ -15,45 +15,19 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'zchee/deoplete-go', { 'do': 'make' }
-Plug 'zchee/deoplete-jedi'
-Plug 'alx741/vim-hindent'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'Quramy/tsuquyomi'
-Plug 'airblade/vim-gitgutter'
-Plug 'w0rp/ale'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
-Plug 'morhetz/gruvbox'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tpope/vim-fugitive'
-Plug 'SirVer/ultisnips'
-Plug 'munshkr/vim-tidal', {'do': 'sudo make install' }
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'ambv/black'
-Plug 'mbbill/undotree'
+Plug 'airblade/vim-gitgutter'
 
-if executable('pyls')
-  " pip install python-language-server
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'pyls',
-    \ 'cmd': {server_info->['pyls']},
-    \ 'whitelist': ['python'],
-    \ })
-endif
+Plug 'w0rp/ale'
+
+Plug 'morhetz/gruvbox'
+
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -66,6 +40,8 @@ set number
 
 set ruler
 
+set spell spelllang=en
+
 set visualbell
 
 set encoding=utf-8
@@ -74,6 +50,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType cs setlocal shiftwidth=4 tabstop=4
 
@@ -120,8 +97,6 @@ autocmd FocusGained,BufEnter * silent! checktime
 " Save when focus is lost
 autocmd FocusLost,WinLeave * :silent! w
 
-autocmd FileType python nmap gd <plug>(lsp-definition)<cr>
-
 " Save file as sudo. For protected files.
 cmap w!! w !sudo tee > /dev/null %
 
@@ -131,39 +106,33 @@ autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
 let g:nerdtree_tabs_open_on_console_startup=1
-" Stops NERDTree with prepending nodes with '^G' symbol.
-let g:NERDTreeNodeDelimiter = "\u00a0"
-let g:NERDTreeIgnore = ['\.pyc$', '\.egg-info$', '__pycache__']
-
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
-
-let g:deoplete#enable_at_startup = 1
-
-let g:go_fmt_command = "goimports"
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
 
-let js_fixer = ['prettier']
+let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
+
+let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
+
+let js_fixer = ['prettier']
 let g:ale_fixers['javascript'] = js_fixer
 let g:ale_fixers['typescript'] = js_fixer
-let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 
-let g:black_linelength = 80
 let g:ale_fixers['python'] = ['black', 'isort']
+let g:black_linelength = 80
+
+let g:ale_fixers['java'] = ['google_java_format']
+
+let g:ale_fixers['haskell'] = ['stylish-haskell']
+
+let g:ale_fixers['go'] = ['goimports']
+
+let g:ale_fixers['rust'] = ['rustfmt']
+
+let c_fixer = ['clang-format']
+let g:ale_fixers['c'] = c_fixer
+let g:ale_fixers['h'] = c_fixer
+let g:ale_fixers['cpp'] = c_fixer
+let g:ale_fixers['hpp'] = c_fixer
+let g:ale_fixers['glsl'] = c_fixer
