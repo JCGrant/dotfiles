@@ -136,3 +136,6 @@ let g:ale_fixers['h'] = c_fixer
 let g:ale_fixers['cpp'] = c_fixer
 let g:ale_fixers['hpp'] = c_fixer
 let g:ale_fixers['glsl'] = c_fixer
+let g:ale_c_parse_compile_commands = 1
+
+let g:ale_fixers['elixir'] = ['mix_format']
