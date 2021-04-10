@@ -9,3 +9,5 @@
 	required = true
 [includeIf "gitdir:~/code/github.com/Babylonpartners/**"]
   path = babylon.gitconfig
+[init]
+	defaultBranch = main
